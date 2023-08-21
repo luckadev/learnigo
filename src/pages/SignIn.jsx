@@ -71,7 +71,7 @@ function SignIn() {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button className="btn text-white bg-purple-600 hover:bg-purple-700 w-full">Entrar</button>
+                      <Link to='/homePlatform' className='btn text-white bg-purple-600 hover:bg-purple-700 w-full'>Entrar</Link>
                     </div>
                   </div>
                 </form>

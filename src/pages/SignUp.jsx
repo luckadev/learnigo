@@ -78,7 +78,7 @@ function SignUp() {
                   </div>
                 </form>
                 <div className="text-gray-400 text-center mt-6">
-                  Já tem uma conta? <Link to="signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Entrar</Link>
+                  Já tem uma conta? <Link to="/signin" className="text-purple-600 hover:text-gray-200 transition duration-150 ease-in-out">Entrar</Link>
                 </div>
               </div>
 
