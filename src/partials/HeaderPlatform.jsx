@@ -63,9 +63,6 @@ function HeaderPlatform() {
                 <Link to="/homePlatform" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">Home</Link>
               </li>
               <li>
-                <Link to="/dictionary" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">Dictionary</Link>
-              </li>
-              <li>
                 <Link to="/tasks" className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3">Go to tasks</Link>
               </li>
             </ul>
@@ -92,10 +89,7 @@ function HeaderPlatform() {
                   <Link to="/homePlatform" className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">Home</Link>
                 </li>
                 <li>
-                  <Link to="/dictionary" className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">Dictionary</Link>
-                </li>
-                <li>
-                  <Link to="/signup" className="font-medium w-full inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out">Go to tasks</Link>
+                  <Link to="/tasks" className="font-medium w-full inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out">Go to tasks</Link>
                 </li>
               </ul>
             </nav>

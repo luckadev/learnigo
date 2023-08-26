@@ -1,11 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import Header from '../partials/Header';
 import PageIllustration from '../partials/PageIllustration';
 import Banner from '../partials/Banner';
+import { AppContext } from '../contexts';
 
 function SignIn() {
+
+  const { signIn, user, setUser } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  function handleSignIn(e) {
+    e.preventDefault();
+    console.log(email, password);
+
+    signIn(email, password);
+    setUser(true);
+    navigate('/homePlatform', { replace: true });
+  }
+
   return (
     <div className="flex flex-col min-h-screen overflow-hidden">
 
@@ -49,17 +67,17 @@ function SignIn() {
                   <div className="text-gray-400">Ou, entrar com seu email</div>
                   <div className="border-t border-gray-700 border-dotted grow ml-3" aria-hidden="true"></div>
                 </div>
-                <form>
+                <form onSubmit={(e) => handleSignIn(e)}>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="email">Email</label>
-                      <input id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@email.com" required />
+                      <input onChange={(e) => setEmail(e.target.value)} id="email" type="email" className="form-input w-full text-gray-300" placeholder="you@email.com" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
                     <div className="w-full px-3">
                       <label className="block text-gray-300 text-sm font-medium mb-1" htmlFor="password">Password</label>
-                      <input id="password" type="password" className="form-input w-full text-gray-300" placeholder="Password (at least 10 characters)" required />
+                      <input onChange={(e) => setPassword(e.target.value)} id="password" type="password" className="form-input w-full text-gray-300" placeholder="Password (at least 10 characters)" required />
                     </div>
                   </div>
                   <div className="flex flex-wrap -mx-3 mb-4">
@@ -71,7 +89,7 @@ function SignIn() {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <Link to='/homePlatform' className='btn text-white bg-purple-600 hover:bg-purple-700 w-full'>Entrar</Link>
+                      <button to='/homePlatform' className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' type='submit'>Entrar</button>
                     </div>
                   </div>
                 </form>
