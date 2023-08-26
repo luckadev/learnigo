@@ -2,7 +2,8 @@ import { createContext, useState } from 'react';
 import { 
   signInWithEmailAndPassword, 
   createUserWithEmailAndPassword,
-  getAuth
+  getAuth,
+  signOut
 } from 'firebase/auth';
 import { doc, addDoc, collection } from 'firebase/firestore';
 import { app, auth, db } from '../firebaseConfig';
@@ -19,9 +20,11 @@ export default function AppProvider({ children }) {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(userResponse => {
         console.log(userResponse);
+        setUser(true);
       })
       .catch(error => {
         console.error('Registration error:', error);
+        setUser(false);
       })
   }
   
@@ -29,10 +32,20 @@ export default function AppProvider({ children }) {
     await signInWithEmailAndPassword(auth, email, password)
       .then(userResponse => {
         console.log(userResponse);
+        setUser(true);
       })
       .catch(error => {
         console.error('Login error:', error);
+        setUser(false);
       })
+  }
+
+  const logout = () => {               
+    signOut(auth).then(() => {
+      console.log("Signed out successfully")
+    }).catch((error) => {
+      console.log(error)
+    });
   }
 
   return (
@@ -42,6 +55,7 @@ export default function AppProvider({ children }) {
       signUp,
       user,
       setUser,
+      logout
     }}>
       {children}
     </AppContext.Provider>

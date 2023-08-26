@@ -19,8 +19,8 @@ function SignIn() {
     e.preventDefault();
     console.log(email, password);
 
-    signIn(email, password);
     setUser(true);
+    signIn(email, password);
     navigate('/homePlatform', { replace: true });
   }
 

@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import '../css/mystyles/tasks.css';
 import HeaderPlatform from '../partials/HeaderPlatform';
 import Footer from '../partials/Footer';
+import { AppContext } from '../contexts';
+import { useNavigate } from 'react-router-dom';
+import BtnLogout from '../partials/BtnLogout';
 
 const Tasks = () => {
+
   return (
     <>
     <HeaderPlatform />
@@ -105,6 +109,7 @@ const Tasks = () => {
       </div>
     </section>
     <Footer />
+    <BtnLogout />
     </>
   )
 }

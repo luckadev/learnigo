@@ -2,12 +2,14 @@
 // SEO
 // Images
 
-import React, { useEffect, useContext } from 'react';
+// things to do:
+// -- fullscreen api
+// -- private route
+
+import React, { useEffect } from 'react';
 import {
   Routes,
   Route,
-  useLocation,
-  useNavigate
 } from 'react-router-dom';
 
 import 'aos/dist/aos.css';
@@ -21,14 +23,9 @@ import SignUp from './pages/SignUp';
 import ResetPassword from './pages/ResetPassword';
 import HomePlatform from './pages/HomePlatform';
 import Tasks from './pages/Tasks';
-import { AppContext } from './contexts';
+import PrivateRoute from './private';
 
 function App() {
-
-  const { user, setUser } = useContext(AppContext);
-
-  const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     AOS.init({
@@ -45,15 +42,6 @@ function App() {
     document.querySelector('html').style.scrollBehavior = ''
   }, [location.pathname]); // triggered on route change
 
-
-  useEffect(() => {
-    if(user) {
-      navigate('/homePlatform', { replace: true });
-    } else {
-      navigate('/signIn', { replace: true });
-    }
-  }, [])
-
   return (
     <>
       <Routes>
@@ -61,8 +49,8 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path='/homePlatform' element={<HomePlatform />} />
-        <Route path='/tasks' element={<Tasks />} />
+        <Route path='/homePlatform' element={<PrivateRoute><HomePlatform /></PrivateRoute>} />
+        <Route path='/tasks' element={<PrivateRoute><Tasks /></PrivateRoute>} />
 
         <Route path='*' element={<Home />} />
       </Routes>
@@ -71,7 +59,3 @@ function App() {
 }
 
 export default App;
-
-// things to do:
-// -- fullscreen api
-// -- private route
