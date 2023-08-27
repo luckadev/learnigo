@@ -5,12 +5,13 @@ import { useNavigate } from 'react-router-dom';
 
 const BtnLogout = () => {
   
-  const { logout } = useContext(AppContext);
+  const { logout, setUser } = useContext(AppContext);
   const navigate = useNavigate();
 
   function handleLogout() {
     logout();
-    navigate('/home', { replace: true });
+    setUser(false);
+    navigate('/', { replace: true });
     scrollTo(0, 0);
   }
 

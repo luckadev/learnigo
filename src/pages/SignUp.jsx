@@ -21,8 +21,8 @@ function SignUp() {
     e.preventDefault();
     console.log(fullName, email, password);
 
-    setUser(true);
     signUp(email, password);
+    setUser(true);
     navigate('/homePlatform', { replace: true });
   }
 

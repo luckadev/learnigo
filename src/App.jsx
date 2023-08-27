@@ -23,7 +23,9 @@ import SignUp from './pages/SignUp';
 import ResetPassword from './pages/ResetPassword';
 import HomePlatform from './pages/HomePlatform';
 import Tasks from './pages/Tasks';
-import PrivateRoute from './private';
+import NotFound from './pages/NotFound';
+import PrivateRoute from './Private';
+import Dictionary from './pages/Dictionary';
 
 function App() {
 
@@ -49,10 +51,12 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/reset-password" element={<ResetPassword />} />
+
         <Route path='/homePlatform' element={<PrivateRoute><HomePlatform /></PrivateRoute>} />
         <Route path='/tasks' element={<PrivateRoute><Tasks /></PrivateRoute>} />
+        <Route path='/dictionary' element={<PrivateRoute><Dictionary /></PrivateRoute>} />
 
-        <Route path='*' element={<Home />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   );

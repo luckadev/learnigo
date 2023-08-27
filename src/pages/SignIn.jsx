@@ -12,15 +12,15 @@ function SignIn() {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   function handleSignIn(e) {
     e.preventDefault();
     console.log(email, password);
 
-    setUser(true);
     signIn(email, password);
+    setUser(true);
     navigate('/homePlatform', { replace: true });
   }
 
@@ -89,7 +89,7 @@ function SignIn() {
                   </div>
                   <div className="flex flex-wrap -mx-3 mt-6">
                     <div className="w-full px-3">
-                      <button to='/homePlatform' className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' type='submit'>Entrar</button>
+                      <button className='btn text-white bg-purple-600 hover:bg-purple-700 w-full' type='submit'>Entrar</button>
                     </div>
                   </div>
                 </form>

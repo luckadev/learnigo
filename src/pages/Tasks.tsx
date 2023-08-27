@@ -1,9 +1,9 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import '../css/mystyles/tasks.css';
+import { Link } from 'react-router-dom';
+
 import HeaderPlatform from '../partials/HeaderPlatform';
 import Footer from '../partials/Footer';
-import { AppContext } from '../contexts';
-import { useNavigate } from 'react-router-dom';
 import BtnLogout from '../partials/BtnLogout';
 
 const Tasks = () => {
@@ -27,7 +27,7 @@ const Tasks = () => {
 
             {/* 1st item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/dictionary'>
                 <p className='py-2'>English Dictionary</p>
                 <p className="small">Elevate your language skills with our comprehensive English dictionary.</p>
                 <div className="go-corner">
@@ -35,12 +35,12 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 2nd item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/'>
                 <p className='py-2'>Pro Tips for Mastering English</p>
                 <p className="small">Unlock the secrets to fluent English with our expert tips and tricks.</p>
                 <div className="go-corner">
@@ -48,12 +48,12 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 3rd item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/'>
                 <p className='py-2'>Learning Channels</p>
                 <p className="small">Explore podcasts, videos, and blogs covering various topics.</p>
                 <div className="go-corner">
@@ -61,12 +61,12 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 4th item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/'>
                 <p className='py-2'>Practice Exercises</p>
                 <p className="small">Enhance your language proficiency through interactive practice exercises.</p>
                 <div className="go-corner">
@@ -74,12 +74,12 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 5th item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/'>
                 <p className='py-2'>Interactive Quizzes</p>
                 <p className="small">Put your learning to the test with our fun and challenging quizzes.</p>
                 <div className="go-corner">
@@ -87,12 +87,12 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
             {/* 6th item */}
             <div className="card">
-              <a className="card1" href="#">
+              <Link className="card1" to='/'>
                 <p className='py-2'>Unlock Fluent English with Our Exclusive eBook</p>
                 <p className="small">Accelerate your learning with our eBook, "Mastering English Essentials." Practical insights for confident communication.</p>
                 <div className="go-corner color">
@@ -100,7 +100,7 @@ const Tasks = () => {
                     →
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
 
           </div>

@@ -20,11 +20,9 @@ export default function AppProvider({ children }) {
     await createUserWithEmailAndPassword(auth, email, password)
       .then(userResponse => {
         console.log(userResponse);
-        setUser(true);
       })
       .catch(error => {
         console.error('Registration error:', error);
-        setUser(false);
       })
   }
   
@@ -32,11 +30,9 @@ export default function AppProvider({ children }) {
     await signInWithEmailAndPassword(auth, email, password)
       .then(userResponse => {
         console.log(userResponse);
-        setUser(true);
       })
       .catch(error => {
         console.error('Login error:', error);
-        setUser(false);
       })
   }
 
