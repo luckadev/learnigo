@@ -1,11 +1,3 @@
-// favicon
-// SEO
-// Images
-
-// things to do:
-// -- fullscreen api
-// -- private route
-
 import React, { useEffect } from 'react';
 import {
   Routes,
@@ -18,13 +10,9 @@ import './css/style.css';
 import AOS from 'aos';
 
 import Home from './pages/Home';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ResetPassword from './pages/ResetPassword';
 import HomePlatform from './pages/HomePlatform';
 import Tasks from './pages/Tasks';
 import NotFound from './pages/NotFound';
-import PrivateRoute from './Private';
 import Dictionary from './pages/Dictionary';
 
 function App() {
@@ -48,13 +36,10 @@ function App() {
     <>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
 
-        <Route path='/homePlatform' element={<PrivateRoute><HomePlatform /></PrivateRoute>} />
-        <Route path='/tasks' element={<PrivateRoute><Tasks /></PrivateRoute>} />
-        <Route path='/dictionary' element={<PrivateRoute><Dictionary /></PrivateRoute>} />
+        <Route path='/homePlatform' element={<HomePlatform />} />
+        <Route path='/tasks' element={<Tasks />} />
+        <Route path='/dictionary' element={<Dictionary />} />
 
         <Route path='*' element={<NotFound />} />
       </Routes>

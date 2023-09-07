@@ -1,57 +1,20 @@
 import { createContext, useState } from 'react';
-import { 
-  signInWithEmailAndPassword, 
-  createUserWithEmailAndPassword,
-  getAuth,
-  signOut
-} from 'firebase/auth';
-import { doc, addDoc, collection } from 'firebase/firestore';
-import { app, auth, db } from '../firebaseConfig';
-
 
 export const AppContext = createContext();
 
 export default function AppProvider({ children }) {
 
-  const [ user, setUser ] = useState(false);
+  const [searchBar, setSearchBar] = useState('');
 
-  // Global functions
-  const signUp = async(email, password) => {
-    await createUserWithEmailAndPassword(auth, email, password)
-      .then(userResponse => {
-        console.log(userResponse);
-      })
-      .catch(error => {
-        console.error('Registration error:', error);
-      })
-  }
-  
-  const signIn = async(email, password)=>{
-    await signInWithEmailAndPassword(auth, email, password)
-      .then(userResponse => {
-        console.log(userResponse);
-      })
-      .catch(error => {
-        console.error('Login error:', error);
-      })
-  }
-
-  const logout = () => {               
-    signOut(auth).then(() => {
-      console.log("Signed out successfully")
-    }).catch((error) => {
-      console.log(error)
-    });
+  const handleSearchBar = (e) => {
+    setSearchBar(e.target.value);
   }
 
   return (
     <AppContext.Provider value={{
-      // Global Contexts
-      signIn,
-      signUp,
-      user,
-      setUser,
-      logout
+      searchBar,
+      setSearchBar,
+      handleSearchBar,
     }}>
       {children}
     </AppContext.Provider>

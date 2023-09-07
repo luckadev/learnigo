@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import HeaderPlatform from '../partials/HeaderPlatform';
 import Footer from '../partials/Footer';
-import BtnLogout from '../partials/BtnLogout';
 
 const Tasks = () => {
 
@@ -109,7 +108,6 @@ const Tasks = () => {
       </div>
     </section>
     <Footer />
-    <BtnLogout />
     </>
   )
 }

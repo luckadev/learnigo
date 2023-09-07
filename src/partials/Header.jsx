@@ -9,6 +9,8 @@ function Header() {
   const trigger = useRef(null);
   const mobileNav = useRef(null);
 
+  const [fullScreen, setFullScreen] = useState('fa-solid fa-expand');
+
   // close the mobile menu on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
@@ -29,6 +31,40 @@ function Header() {
     document.addEventListener('keydown', keyHandler);
     return () => document.removeEventListener('keydown', keyHandler);
   });
+
+  useEffect(() => {
+    let myDocument = document.documentElement;
+    let btn = document.getElementById('btnFull');
+  
+    btn.addEventListener('click', () => {
+      if(btn.textContext == 'Go Fullscreen') {
+        if(myDocument.requestFullscreen) {
+          myDocument.requestFullscreen();
+        } else if(myDocument.msRequestFullscreen) {
+          myDocument.msRequestFullscreen();
+        } else if(myDocument.mozRequestFullScreen) {
+          myDocument.mozRequestFullScreen();
+        } else if(myDocument.webkitRequestFullscreen) {
+          myDocument.webkitRequestFullscreen();
+        }
+    
+        btn.textContext = 'Exit Fullscreen';
+      } else {
+        if(document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if(document.msexitFullscreen) {
+          document.msexitFullscreen();
+        } else if(document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if(document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        }
+
+        btn.textContext = 'Go Fullscreen';
+      }
+    })
+  })
+
 
   return (
     <header className="absolute w-full z-30">
@@ -60,11 +96,11 @@ function Header() {
             {/* Desktop sign in links */}
             <ul className="flex grow justify-end flex-wrap items-center">
               <li>
-                <Link to="/signin" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">Entrar</Link>
+                <Link to="/homePlatform" className="font-medium text-purple-600 hover:text-gray-200 px-4 py-3 flex items-center transition duration-150 ease-in-out">Entrar</Link>
               </li>
               <li>
-                <Link to="/signup" className="btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3">Cadastrar</Link>
-              </li>
+                  <button id='btnFull' className='btn-sm text-white bg-purple-600 hover:bg-purple-700 ml-3'>Fullscreen &nbsp;&nbsp;<i className="fa-solid fa-expand"></i></button>
+                </li>
             </ul>
 
           </nav>
@@ -86,10 +122,10 @@ function Header() {
             <nav id="mobile-nav" ref={mobileNav} className="absolute top-full z-20 left-0 w-full px-4 sm:px-6 overflow-hidden transition-all duration-300 ease-in-out" style={mobileNavOpen ? { maxHeight: mobileNav.current.scrollHeight, opacity: 1 } : { maxHeight: 0, opacity: .8 } }>
               <ul className="bg-gray-800 px-4 py-2">
                 <li>
-                  <Link to="/signin" className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">Entrar</Link>
+                  <Link to="/homePlatform" className="flex font-medium w-full text-purple-600 hover:text-gray-200 py-2 justify-center">Entrar</Link>
                 </li>
                 <li>
-                  <Link to="/signup" className="font-medium w-full inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out">Cadastrar</Link>
+                  <button id='btnFull' className='font-medium w-full inline-flex items-center justify-center border border-transparent px-4 py-2 my-2 rounded-sm text-white bg-purple-600 hover:bg-purple-700 transition duration-150 ease-in-out'>Fullscreen &nbsp;&nbsp;<i className="fa-solid fa-expand"></i></button>
                 </li>
               </ul>
             </nav>
